@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% block content %}
+<button type="button"  class="btn btn-default js-upload-photos">
+  <span class="glyphicon glyphicon-cloud-upload "></span> Upload files
+</button>
+<form method="post" action="{% url 'fileapp:clear_database' %}">
+  {% csrf_token %}
+  <input type="hidden" name="next" value="{{ request.path }}">
+  <button type="submit" style="margin-bottom: 15px; margin-top: -35px;" class="btn btn-danger pull-right">
+    <span class="glyphicon glyphicon-trash"></span> Clear Database
+  </button>
+</form>
+<input id="fileupload" type="file" name="file" multiple
+       accept="image/*,video/*"
+       style="display: none;"
+       data-url="{% url 'fileapp:index' %}"
+       data-form-data='{"csrfmiddlewaretoken": "{{ csrf_token }}"}'>
+<table id="gallery" class="table table-bordered">
+  <thead>
+    <tr>
+        <th>Files</th>
+    </tr>
+  </thead>
+  <tbody>
+     {% for file in files %}
+      <tr>
+        <td><a href="{{ file.file.url }}">{{ file.file.name }}</a></td>
+      </tr>
+     {% endfor %}
+  </tbody>
+</table>
+<div class="modal fade" id="modal-progress" data-backdrop="static" data-keyboard="false">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Uploading...</h4>
+      </div>
+      <div class="modal-body">
+        <div class="progress">
+          <div class="progress-bar" role="progressbar" style="width: 0%;">0%</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
