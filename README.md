@@ -36,6 +36,11 @@ First, clone the repository to your local machine:
 git clone https://github.com/jayesh-prajapati/django-multiple-fileupload.git
 ```
 
+Install the requirements:
+
+```bash
+pip install -r requirements.txt
+```
 
 Create the database:
 
