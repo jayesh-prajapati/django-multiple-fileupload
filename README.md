@@ -12,7 +12,7 @@
 
   - Can upload multiple images and videos .
   - Directly shows customized files for video and images.
-  - Stores all the files in the YYYY/M/D directory
+  - Stores all the files in the YYYY/MM/DD directory
   - Shows progress bar for uploading files
   - Deletes files in a single click.
   - Made with AJAX and Jquery file upload
